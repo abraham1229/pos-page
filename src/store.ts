@@ -6,6 +6,7 @@ interface Store {
   total: number
   contents: ShoppingCart
   addToCart: (product: Product) => void
+  updateQuantity: (id: Product['id'], quantity: number) => void
 }
 
 
@@ -20,7 +21,7 @@ export const useStore = create<Store>()(devtools((set, get) => ({
 
     if (duplicated >= 0) {
       //Check if there is enough stock
-      if (get().contents[duplicated].quantity >= get().contents[duplicated].inventory) return 
+      if (get().contents[duplicated].quantity >= get().contents[duplicated].inventory) return
 
       contents = get().contents.map(item => item.productId === productId ? {
         ...item,
@@ -37,5 +38,9 @@ export const useStore = create<Store>()(devtools((set, get) => ({
     set(() => ({
       contents
     }))
+  },
+  updateQuantity: (id, quantity) => {
+    const contents = get().contents.map(item => item.productId === id ? { ...item, quantity } : item)
+    set(() => ({ contents }))
   }
 })))
