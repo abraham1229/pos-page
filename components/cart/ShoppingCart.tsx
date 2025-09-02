@@ -4,6 +4,7 @@ import { useStore } from "@/src/store"
 import ShoppingCartItem from "./ShoppingCartItem"
 import Amount from "./Amount"
 import CouponForm from "./CouponForm"
+import SubmitOrderForm from "./SubmitOrderForm"
 
 export default function ShoppingCart() {
 
@@ -38,6 +39,7 @@ export default function ShoppingCart() {
             />
           </dl>
           <CouponForm />
+          <SubmitOrderForm />
         </>
       ) : (
         <p className="text-xl text-center text-gray-900">Shopping cart is empty</p>
