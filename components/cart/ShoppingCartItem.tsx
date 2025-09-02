@@ -30,7 +30,7 @@ export default function ShoppingCartItem({ item }: { item: CartItem }) {
           onChange={(e) => updateQuantity(item.productId, +e.target.value)}
         >
           {Array.from({ length: item.inventory }, (_, index) => index + 1).map(num => (
-            <option value={num}>{num}</option>
+            <option key={`${item.productId}-${num}`} value={num}>{num}</option>
           ))
           }
         </select>
