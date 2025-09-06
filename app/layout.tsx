@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import "./globals.css";
 import { Outfit } from 'next/font/google'
+import Providers from "./providers";
 
-const outfit = Outfit({subsets: ['latin']})
+const outfit = Outfit({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "POS",
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body
         className={`${outfit.className} bg-gray-200`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

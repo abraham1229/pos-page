@@ -52,6 +52,23 @@ export const OrderSchema = z.object({
   contents: z.array(OrderContentSchema).min(1, { message: 'El Carrito no puede ir vacio' })
 })
 
+export const ContentsSchema = z.object({
+  id: z.number(),
+  quantity: z.number(),
+  price: z.string(),
+  product: ProductSchema
+})
+export const TransactionResponseSchema = z.object({
+  id: z.number(),
+  total: z.string(),
+  transactionDate: z.string(),
+  discount: z.string(),
+  coupon: z.string().nullable(),
+  contents: z.array(ContentsSchema)
+})
+
+export const TransactionsResponseSchema = z.array(TransactionResponseSchema)
+
 /** Success / Error Response */
 export const SuccessResponseSchema = z.object({
   message: z.string()
