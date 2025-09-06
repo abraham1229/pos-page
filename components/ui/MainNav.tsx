@@ -32,6 +32,12 @@ export default async function MainNav() {
             {category.name}
           </Link>
         ))}
+        <Link
+          href={'/admin/sales'}
+          className="rounded bg-green-400 font-bold py-2 px-5 ml-2"
+        >
+          Admin Panel
+        </Link>
       </nav>
     </header>
   )
