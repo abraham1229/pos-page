@@ -74,6 +74,17 @@ export const TransactionResponseSchema = z.object({
 
 export const TransactionsResponseSchema = z.array(TransactionResponseSchema)
 
+export const ProductFormSchema = z.object({
+  name: z.string()
+    .min(1, { message: 'Name can not be empty' }),
+  price: z.coerce.number({ message: 'Invalid price' })
+    .min(1, { message: 'Price must be greater than 0' }),
+  inventory: z.coerce.number({ message: 'Invalid inventory' })
+    .min(1, { message: 'Stock must be greater than 0' }),
+  categoryId: z.coerce.number({ message: 'La Categoria no es válida' }).int().min(1, { message: 'Select a category' })
+})
+
+
 /** Success / Error Response */
 export const SuccessResponseSchema = z.object({
   message: z.string()
