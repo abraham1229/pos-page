@@ -10,7 +10,7 @@ interface Store {
   addToCart: (product: Product) => void
   updateQuantity: (id: Product['id'], quantity: number) => void
   removeFromCart: (id: Product['id']) => void
-  calculateTotal: () => {}
+  calculateTotal: () => void
   applyCoupon: (couponName: string) => Promise<void>
   applyDiscount: () => void
   clearOrder: () => void
@@ -39,7 +39,7 @@ export const useStore = create<Store>()(devtools((set, get) => ({
     percentage: 0
   },
   addToCart: (product) => {
-    const { id: productId, categoryId, ...data } = product
+    const { id: productId, ...data } = product
     let contents: ShoppingCart = []
 
     const duplicated = get().contents.findIndex(item => item.productId === productId)

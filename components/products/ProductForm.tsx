@@ -18,7 +18,7 @@ export default async function ProductForm({ product }: { product?: Product }) {
         <label
           htmlFor="name"
           className="block"
-        >Product's Name</label>
+        >Product&apos;s Name</label>
         <input
           id="name"
           type="text"
